@@ -24,7 +24,6 @@ export default {
     display: flex;
     background: #00bcd4;
     line-height: 0.86rem;
-    /* text-align: center; */
     color: #fff;
   }
   .header .header-left{
