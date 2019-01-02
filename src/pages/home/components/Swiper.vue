@@ -14,10 +14,11 @@ export default {
     name: 'HomeSwiper',
     data () {
       return {
-        swiperOption: {
-          pagination: '.swiper-pagination',
-          loop: true,
-        },
+         swiperOption: {
+        // some swiper options/callbacks
+        pagination: ".swiper-pagination",
+        loop: true
+       },
         swiperList: [{
             id: '0001',
             imgUrl: 'http://img1.qunarzz.com/piao/fusion/1811/f7/72ce947f4dff4c02.jpg_750x200_aa583dba.jpg'
