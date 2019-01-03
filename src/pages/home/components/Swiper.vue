@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
-     <swiper :options="swiperOption">
-      <swiper-slide v-for="item of swiperList" :key="item.id">
+     <swiper :options="swiperOption" v-if="showSwiper">
+      <swiper-slide v-for="item of list" :key="item.id">
           <img class="swiper-img"  :src="item.imgUrl" alt="">
       </swiper-slide>
       <div class="swiper-pagination"  slot="pagination"></div>
@@ -12,6 +12,11 @@
 <script>
 export default {
     name: 'HomeSwiper',
+    //子组件接收父组件的值
+    props: {
+      //接收数据类型  Array
+      list: Array
+    },
     data () {
       return {
          swiperOption: {
@@ -19,16 +24,13 @@ export default {
         pagination: ".swiper-pagination",
         loop: true
        },
-        swiperList: [{
-            id: '0001',
-            imgUrl: 'http://img1.qunarzz.com/piao/fusion/1811/f7/72ce947f4dff4c02.jpg_750x200_aa583dba.jpg'
-        }, {
-            id: '0002',
-            imgUrl: 'http://img1.qunarzz.com/piao/fusion/1812/48/5713e2a2ba72f902.jpg_750x200_2b382dac.jpg'
-        }, {
-            id: '0003',
-            imgUrl: 'http://img1.qunarzz.com/piao/fusion/1811/39/6b1f0402bb1d5902.jpg_750x200_3c7661d6.jpg'
-        }]
+    }
+  },
+  //计算属性
+  computed: {
+    showSwiper () {
+      //判断传的数组是否为空
+      return this.list.length
     }
   }
 }
