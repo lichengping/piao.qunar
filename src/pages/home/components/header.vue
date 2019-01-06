@@ -7,17 +7,20 @@
       <span class="iconfont">&#xe632;</span>
       输入城市景点游玩主题
 </div>
+   <!-- vue内置跳转组件 -->
+  <router-link to='/city'>
   <div class="header-right">
       {{this.city}}
       <span class="iconfont">&#xe64a;</span>
   </div>
+  </router-link>
 </div>
 </template>
 
 <script>
 export default {
   name: 'HomeHeader',
-  //子组件接收父组件传来的值  方法
+    //子组件接收父组件传来的值  方法
   props: {
     //city类型必须是string类型  注意大写String
     city: String
@@ -40,6 +43,7 @@ export default {
   }
   .header .header-right{
     width: 1.24rem;
+    color: #fff;
   }
   .header .header-input{
     flex: 1;

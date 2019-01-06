@@ -4,7 +4,7 @@
     <ul>
         <li class="item" v-for="item of list" :key="item.id">
             <div class="item-img-wrapper">
-               <img class="item-img" :src="item.imgUlr" alt=""> 
+               <img class="item-img" :src="item.imgUrl" alt=""> 
             </div>
             <div class="item-info">
                 <p class="item-title">{{item.title}}</p>
