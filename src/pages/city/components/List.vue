@@ -14,53 +14,15 @@
      <div class="area">
          <div class="title border-bottom">热门城市</div>
          <div class="button-list">
-             <div class="button-wrapper">
-                 <div class="button">深圳</div>
-             </div>
-               <div class="button-wrapper">
-                 <div class="button">深圳</div>
-             </div>
-               <div class="button-wrapper">
-                 <div class="button">深圳</div>
-             </div>
-               <div class="button-wrapper">
-                 <div class="button">深圳</div>
+             <div class="button-wrapper" v-for="item of hot" :key="item.id">
+                 <div class="button">{{item.name}}</div>
              </div>
          </div>
      </div>
-     <div class="area">
-         <div class="title border-bottom">A</div>
+     <div class="area" v-for="(item, key) of cities" :key="key">
+         <div class="title border-bottom">{{key}}</div>
          <div class="item-list">
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-         </div>
-          <div class="title border-bottom">A</div>
-         <div class="item-list">
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-         </div>
-          <div class="title border-bottom">A</div>
-         <div class="item-list">
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
-             <div class="item">阿勒泰</div>
+             <div class="item" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
          </div>
      </div>
     </div> 
@@ -72,6 +34,11 @@
 import BScroll from 'better-scroll'
 export default {
     name: 'CityList',
+    //接收父组件传来的值
+    props: {
+      hot: Array,
+      cities: Object,
+    },
     // 生命周期函数mounted:在页面dom挂载完毕之后执行
     mounted () {
         this.scroll = new BScroll(this.$refs.wrapper)

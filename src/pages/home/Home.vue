@@ -40,10 +40,12 @@ export default {
   },
   methods: {
     getHomeInfo () {
+       //请求ajax数据
       axios.get('/static/mock/index.json')
+        //返回值
         .then(this.getHomeInfoSucc)
     },
-    //请求ajax数据
+    //方法  获取数据
     getHomeInfoSucc (res) {
       //获取数据内容
       res = res.data;
