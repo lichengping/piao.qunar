@@ -2,8 +2,11 @@
 <div>
   <city-header></city-header>
   <city-search></city-search>
-  <city-list :cities="cities" :hot="hotCities"></city-list>
-  <city-alphabet :cities="cities"></city-alphabet>
+  <city-list :cities="cities" :hot="hotCities" :letter="letter"></city-list>
+  <city-alphabet 
+   :cities="cities" 
+   @change="handleLetterChange"
+  ></city-alphabet>
 </div>
 </template>
 
@@ -27,7 +30,9 @@ export default {
         // 城市名字  父组件向子组件传值
         cities:{},
         //热门地名   父组件向子组件传值
-        hotCities:[]
+        hotCities:[],
+        //将传子组件获取的值传给其他兄弟的数据
+        letter:''
       }
     },
     methods: {
@@ -49,6 +54,10 @@ export default {
         }
           console.log(res);
           
+      },
+      //监听到值组件传来的数据
+      handleLetterChange (letter) {
+        this.letter = letter;
       }
     },
     // 生命周期函数mounted:在页面dom挂载完毕之后执行

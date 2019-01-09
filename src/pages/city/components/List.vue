@@ -19,7 +19,8 @@
              </div>
          </div>
      </div>
-     <div class="area" v-for="(item, key) of cities" :key="key">
+     <!-- :ref的key值获取到ajax的字母的数据 -->
+     <div class="area" v-for="(item, key) of cities" :key="key" :ref="key">
          <div class="title border-bottom">{{key}}</div>
          <div class="item-list">
              <div class="item" v-for="innerItem of item" :key="innerItem.id">{{innerItem.name}}</div>
@@ -38,10 +39,24 @@ export default {
     props: {
       hot: Array,
       cities: Object,
+      letter: String,  //兄弟组件传给父组,父组在传到当前组件数据
     },
     // 生命周期函数mounted:在页面dom挂载完毕之后执行
     mounted () {
         this.scroll = new BScroll(this.$refs.wrapper)
+    },
+    //侦听器
+    watch: {
+        //监听letter传来的值得变化
+        letter () {
+            // 方法::自动滚动当前的位置
+            if(this.letter){
+                const element = this.$refs[this.letter][0]
+                //scroll触发时机：滚动过程中    scrollToElement 滚动到指定的目标元素
+                this.scroll.scrollToElement(element)
+            }
+            console.log(this.letter);
+        }
     }
 }
 </script>
