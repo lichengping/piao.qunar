@@ -9,6 +9,9 @@
 </template>
 
 <script>
+//引入better-scroll包
+import BScroll from 'better-scroll'
+
 import HomeHeader from './components/header'
 import HomeSwiper from './components/Swiper'
 import HomeIcons from './components/Icons'
@@ -62,9 +65,12 @@ export default {
     }
   },
   mounted () {
-    this.getHomeInfo()
+    this.getHomeInfo();
   }
 }
 </script>
 <style>
+  .list {
+    overflow: hidden;
+  }
 </style>
